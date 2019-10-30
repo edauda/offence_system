@@ -22,14 +22,14 @@ else{
 $debug = TRUE;
 
 //the Base_URI defines the absolute path to the application on the local server
-define('BASE_URI','C:\xampp\htdocs\offencesystem');
+define('BASE_URI','C:\xampp\htdocs\offence_system');
    // The BASE_URL defines the path to the site via the 
     // localhost server
-define('BASE_URL','http://localhost/offencesystem/');
+define('BASE_URL','http://localhost/offence_system/');
 
 //The DB constant defines the absolute path to the 
 //database configuration file
-define('DB','C:\xampp\htdocs\offencesystem\includes\mysql.inc.php');
+define('DB','C:\xampp\htdocs\offence_system\includes\mysql.inc.php');
 
 //assuming debugging is off
 if(!isset($debug)){
