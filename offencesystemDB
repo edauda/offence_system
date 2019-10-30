@@ -1,0 +1,107 @@
+-- ----------------------------------------------------------------------------
+-- MySQL Workbench Migration
+-- Migrated Schemata: offencesystemDB
+-- Source Schemata: offence_system
+-- Created: Wed Oct 16 23:36:42 2019
+-- Workbench Version: 8.0.17
+-- ----------------------------------------------------------------------------
+
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------------------------------------------------------
+-- Schema offencesystemDB
+-- ----------------------------------------------------------------------------
+DROP SCHEMA IF EXISTS `offencesystemDB` ;
+CREATE SCHEMA IF NOT EXISTS `offencesystemDB` ;
+
+-- ----------------------------------------------------------------------------
+-- Table offencesystemDB.offence
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `offencesystemDB`.`offence` (
+  `offence_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `offence_type_id` VARCHAR(45) NULL DEFAULT NULL,
+  `offence_code` VARCHAR(45) NULL DEFAULT NULL,
+  `offence_fee` DECIMAL(10,0) NULL DEFAULT NULL,
+  `offence_category_id` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`offence_id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+-- ----------------------------------------------------------------------------
+-- Table offencesystemDB.offence_category
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `offencesystemDB`.`offence_category` (
+  `offence_category_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `offence_category` VARCHAR(50) NULL DEFAULT NULL,
+  PRIMARY KEY (`offence_category_id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+-- ----------------------------------------------------------------------------
+-- Table offencesystemDB.offence_type
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `offencesystemDB`.`offence_type` (
+  `offence_type_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `offence_type` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`offence_type_id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+-- ----------------------------------------------------------------------------
+-- Table offencesystemDB.offender
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `offencesystemDB`.`offender` (
+  `offender_id` INT(11) NOT NULL,
+  `offender_fname` VARCHAR(45) NULL DEFAULT NULL,
+  `offender_lname` VARCHAR(45) NULL DEFAULT NULL,
+  `offender_phone_no` VARCHAR(45) NULL DEFAULT NULL,
+  `offender_address` VARCHAR(100) NULL DEFAULT NULL,
+  `offender_plate_no` VARCHAR(45) NULL DEFAULT NULL,
+  `offender_title` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`offender_id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+-- ----------------------------------------------------------------------------
+-- Table offencesystemDB.report
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `offencesystemDB`.`report` (
+  `report_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `report_date` DATETIME NULL DEFAULT NULL,
+  `report_comment` VARCHAR(300) NULL DEFAULT NULL,
+  `report_staff_id` VARCHAR(45) NULL DEFAULT NULL,
+  `report_offender_id` INT(11) NULL DEFAULT NULL,
+  `report_offence_category_id` INT(11) NULL DEFAULT NULL,
+  `report_offence_type_id` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`report_id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+-- ----------------------------------------------------------------------------
+-- Table offencesystemDB.staff
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `offencesystemDB`.`staff` (
+  `staff_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `staff_fname` VARCHAR(45) NULL DEFAULT NULL,
+  `staff_lname` VARCHAR(45) NULL DEFAULT NULL,
+  `staff_rank` VARCHAR(45) NULL DEFAULT NULL,
+  `staff_phone_no` VARCHAR(45) NULL DEFAULT NULL,
+  `staff_id_no` VARCHAR(45) NULL DEFAULT NULL,
+  `staff_email` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`staff_id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+-- ----------------------------------------------------------------------------
+-- Table offencesystemDB.user
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `offencesystemDB`.`user` (
+  `user_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `user_name` VARCHAR(50) NULL DEFAULT NULL,
+  `user_password` VARCHAR(50) NULL DEFAULT NULL,
+  `user_status` INT(11) NULL DEFAULT NULL,
+  `user_level` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`user_id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+SET FOREIGN_KEY_CHECKS = 1;
